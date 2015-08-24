@@ -1,0 +1,14 @@
+CHIP OR8Way
+{
+   IN in0[8];
+   OUT out0;
+
+   PARTS:
+      OR2-1(in0 = in0[0], in1 = in0[1], out0 = out01);
+      OR2-1(in0 = in0[2], in1 = in0[3], out0 = out23);
+      OR2-1(in0 = in0[4], in1 = in0[5], out0 = out45);
+      OR2-1(in0 = in0[6], in1 = in0[7], out0 = out67);
+      OR2-1(in0 = out01, in1 = out23, out0 = outLsb);
+      OR2-1(in0 = out45, in1 = out67, out0 = outMsb);
+      OR2-1(in0 = outLsb, in1 = outMsb, out0 = out0);
+}
