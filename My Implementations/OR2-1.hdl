@@ -1,0 +1,10 @@
+CHIP OR2-1
+{
+   IN in0, in1;
+   OUT out0;
+
+   PARTS:
+      Nand(a = in0, b = in0, out = in0Nand);
+      Nand(a = in1, b = in1, out = in1Nand);
+      Nand(a = in0Nand, b = in1Nand, out = out0);
+}

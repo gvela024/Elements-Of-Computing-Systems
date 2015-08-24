@@ -1,0 +1,8 @@
+CHIP INV
+{
+   IN in0;
+   OUT out0;
+
+   PARTS:
+      Nand(a = in0, b = true, out = out0);
+}

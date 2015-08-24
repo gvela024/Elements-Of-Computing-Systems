@@ -1,0 +1,9 @@
+CHIP AND2-1
+{
+   IN in0, in1;
+   OUT out0;
+
+   PARTS:
+      Nand(a = in0, b = in1, out = outNand);
+      INV(in0 = outNand, out0 = out0);
+}

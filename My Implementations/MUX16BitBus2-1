@@ -1,0 +1,28 @@
+CHIP MUX16BitBus2-1
+{
+   IN in0[16], in1[16], select;
+   OUT out0[16];
+
+   PARTS:
+      INV(in0 = select, out0 = invertedSelect);
+
+      AND2-1(in0 = in0[0], in1 = invertedSelect, out0 = in0Selected[0]);
+      AND2-1(in0 = in0[1], in1 = invertedSelect, out0 = in0Selected[1]);
+      AND2-1(in0 = in0[2], in1 = invertedSelect, out0 = in0Selected[2]);
+      AND2-1(in0 = in0[3], in1 = invertedSelect, out0 = in0Selected[3]);
+      AND2-1(in0 = in0[4], in1 = invertedSelect, out0 = in0Selected[4]);
+      AND2-1(in0 = in0[5], in1 = invertedSelect, out0 = in0Selected[5]);
+      AND2-1(in0 = in0[6], in1 = invertedSelect, out0 = in0Selected[6]);
+      AND2-1(in0 = in0[7], in1 = invertedSelect, out0 = in0Selected[7]);
+      AND2-1(in0 = in0[8], in1 = invertedSelect, out0 = in0Selected[8]);
+      AND2-1(in0 = in0[9], in1 = invertedSelect, out0 = in0Selected[9]);
+      AND2-1(in0 = in0[10], in1 = invertedSelect, out0 = in0Selected[10]);
+      AND2-1(in0 = in0[11], in1 = invertedSelect, out0 = in0Selected[11]);
+      AND2-1(in0 = in0[12], in1 = invertedSelect, out0 = in0Selected[12]);
+      AND2-1(in0 = in0[13], in1 = invertedSelect, out0 = in0Selected[13]);
+      AND2-1(in0 = in0[14], in1 = invertedSelect, out0 = in0Selected[14]);
+      AND2-1(in0 = in0[15], in1 = invertedSelect, out0 = in0Selected[15]);
+
+      AND2-1(in0 = in1, in1 = select, out0 = in1Selected);
+      OR2-1(in0 = in0Selected, in1 = in1Selected, out0 = out0);
+}
