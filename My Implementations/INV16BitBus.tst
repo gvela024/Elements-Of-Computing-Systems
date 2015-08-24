@@ -1,5 +1,5 @@
-load INV16bit.hdl,
-output-file INV16bit.out,
+load INV16BitBus.hdl,
+output-file INV16BitBus.out,
 output-list in0%B1.16.1 out0%B1.16.1;
 
 set in0 %X0000, eval, output;
