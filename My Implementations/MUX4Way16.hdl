@@ -1,0 +1,9 @@
+CHIP MUX4Way16
+{
+   IN in0[16], in1[16], in2[16], in3[16], select[2];
+   OUT out0[16];
+   SIGNAL selectInverted[2];
+
+   PARTS:
+      INV
+}
