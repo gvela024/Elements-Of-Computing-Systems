@@ -1,4 +1,4 @@
-load AND16BitBus2-1.hdl,
+load AND16B2-1.hdl,
 output-file AND16BitBus2-1.out,
 output-list in0%B1.16.1 in1%B1.16.1 out0%B1.16.1;
 

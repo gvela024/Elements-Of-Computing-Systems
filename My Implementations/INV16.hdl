@@ -1,4 +1,4 @@
-CHIP INV16BitBus
+CHIP INV16
 {
    IN in0[16];
    OUT out0[16];
