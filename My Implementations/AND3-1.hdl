@@ -1,0 +1,9 @@
+CHIP AND3-1
+{
+   IN in0, in1, in2;
+   OUT out0;
+
+   PARTS:
+      AND2-1(in0 = in0, in1 = in1, out0 = in1And2);
+      AND2-1(in0 = in1And2, in1 = in2, out0 = out0);
+}
