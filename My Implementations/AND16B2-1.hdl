@@ -1,4 +1,4 @@
-CHIP AND16BitBus2-1
+CHIP AND16B2-1
 {
    IN in0[16], in1[16];
    OUT out0[16];

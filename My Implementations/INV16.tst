@@ -1,4 +1,4 @@
-load INV16BitBus.hdl,
+load INV16.hdl,
 output-file INV16BitBus.out,
 output-list in0%B1.16.1 out0%B1.16.1;
 
