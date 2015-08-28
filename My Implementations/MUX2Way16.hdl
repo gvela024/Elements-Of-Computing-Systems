@@ -1,4 +1,4 @@
-CHIP MUX16BitBus2-1
+CHIP MUX2Way16
 {
    IN in0[16], in1[16], select;
    OUT out0[16];
