@@ -1,0 +1,9 @@
+CHIP HalfAdder
+{
+   IN in0, in1;
+   OUT sum, carry;
+
+   PARTS:
+      XOR2-1(in0 = in0, in1 = in1, out0 = sum);
+      AND2-1(in0 = in0, in1 = in1, out0 = carry);
+}
