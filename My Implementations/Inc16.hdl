@@ -1,0 +1,8 @@
+CHIP Inc16
+{
+   IN in0[16];
+   OUT sum[16];
+
+   PARTS:
+      Add16(in0 = in0, in1 = true, sum = sum);
+}
