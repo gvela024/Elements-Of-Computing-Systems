@@ -1,0 +1,8 @@
+CHIP ALU
+{
+   IN in0[16], in1[16], zeroIn0, negateIn0, zeroIn1, negateIn1, function, negateOut0;
+   OUT out0[16], zero, negative;
+
+   PARTS:
+      
+}
