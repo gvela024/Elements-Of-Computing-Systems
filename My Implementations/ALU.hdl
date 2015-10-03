@@ -1,0 +1,26 @@
+CHIP ALU
+{
+   IN in0[16], in1[16], zeroIn0, negateIn0, zeroIn1, negateIn1, function, negateOut0;
+   OUT out0[16], zero, negative;
+
+   PARTS:
+      INV16(in0 = in0, out0 = in0Inverted);
+      INV16(in0 = in1, out0 = in1Inverted);
+
+      MUX4Way16(in0 = in0, in1 = in0Inverted, in2 = false, in3 = true, select[1] = zeroIn0, select[0] = negateIn0, out0 = operand0);
+      MUX4Way16(in0 = in1, in1 = in1Inverted, in2 = false, in3 = true, select[1] = zeroIn1, select[0] = negateIn1, out0 = operand1);
+
+      AND16B2-1(in0 = operand0, in1 = operand1, out0 = andResult);
+      FullAdder16(in0 = operand0, in1 = operand1, carryIn = false, sum = sum);
+
+      MUX2Way16(in0 = andResult, in1 = sum, select = function, out0 = result, out0[15] = negativeResultFlag);
+
+      INV16(in0 = result, out0 = resultNegated);
+
+      MUX2Way16(in0 = result, in1 = resultNegated, select = negateOut0, out0 = out0);
+
+      OR16Way(in0 = result, out0 = zeroActiveLow);
+      INV(in0 = zeroActiveLow, out0 = zero);
+
+      AND2-1(in0 = negativeResultFlag, in1 = true, out0 = negative);
+}
