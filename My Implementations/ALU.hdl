@@ -4,14 +4,11 @@ CHIP ALU
    OUT out0[16], zero, negative;
 
    PARTS:
-      MUX2Way16(in0 = in0, in1 = false, select = zeroIn0, out0 = in0OrZeroed);
-      MUX2Way16(in0 = in1, in1 = false, select = zeroIn1, out0 = in1OrZeroed);
-
       INV16(in0 = in0, out0 = in0Inverted);
       INV16(in0 = in1, out0 = in1Inverted);
 
-      MUX2Way16(in0 = in0, in1 = in0Inverted, select = negateIn0, out0 = in0OrInvertedIn0);
-      MUX2Way16(in0 = in1, in1 = in1Inverted, select = negateIn1, out0 = in1OrInvertedIn1);
+      MUX4Way16(in0 = in0, in1 = in0Inverted, in2 = false, in3 = true, select[0] = zeroIn0, select[1] = negateIn0, out0 = operand0);
+      MUX4Way16(in0 = in1, in1 = in1Inverted, in2 = false, in3 = true, select[0] = zeroIn1, select[1] = negateIn1, out0 = operand1);
 
-      
+      AND16B2-1(in0 = opreand0, in1 = operand1, output = andResult);
 }
