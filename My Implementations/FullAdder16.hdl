@@ -1,0 +1,23 @@
+CHIP FullAdder16
+{
+   IN in0[16], in1[16], carryIn;
+   OUT sum[16], carry;
+
+   PARTS:
+      FullAdder(in0 = in0[0], in1 = in1[0], in2 = carryIn, sum = sum[0], carry = carry0);
+      FullAdder(in0 = in0[1], in1 = in1[1], in2 = carry0, sum = sum[1], carry = carry1);
+      FullAdder(in0 = in0[2], in1 = in1[2], in2 = carry1, sum = sum[2], carry = carry2);
+      FullAdder(in0 = in0[3], in1 = in1[3], in2 = carry2, sum = sum[3], carry = carry3);
+      FullAdder(in0 = in0[4], in1 = in1[4], in2 = carry3, sum = sum[4], carry = carry4);
+      FullAdder(in0 = in0[5], in1 = in1[5], in2 = carry4, sum = sum[5], carry = carry5);
+      FullAdder(in0 = in0[6], in1 = in1[6], in2 = carry5, sum = sum[6], carry = carry6);
+      FullAdder(in0 = in0[7], in1 = in1[7], in2 = carry6, sum = sum[7], carry = carry7);
+      FullAdder(in0 = in0[8], in1 = in1[8], in2 = carry7, sum = sum[8], carry = carry8);
+      FullAdder(in0 = in0[9], in1 = in1[9], in2 = carry8, sum = sum[9], carry = carry9);
+      FullAdder(in0 = in0[10], in1 = in1[10], in2 = carry9, sum = sum[10], carry = carry10);
+      FullAdder(in0 = in0[11], in1 = in1[11], in2 = carry10, sum = sum[11], carry = carry11);
+      FullAdder(in0 = in0[12], in1 = in1[12], in2 = carry11, sum = sum[12], carry = carry12);
+      FullAdder(in0 = in0[13], in1 = in1[13], in2 = carry12, sum = sum[13], carry = carry13);
+      FullAdder(in0 = in0[14], in1 = in1[14], in2 = carry13, sum = sum[14], carry = carry14);
+      FullAdder(in0 = in0[15], in1 = in1[15], in2 = carry14, sum = sum[15], carry = carry);
+}
