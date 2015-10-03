@@ -15,6 +15,10 @@ CHIP ALU
 
       MUX2Way16(in0 = andResult, in1 = sum, select = function, out0 = out0, out0 = result);
 
-      AND16B2-1(in0 = result, in1 = false, out0 = zero);
+      OR8Way(in0 = result[0..7], out0 = lsbZero);
+      OR8Way(in1 = result[8..15], out0 = msbZero);
+      OR2-1(in0 = lsbZero, in1 = msbZero, out0 = zeroActiveLow);
+      INV(in0 = zeroActiveLow, out0 = zero);
+
       AND2-1(in0 = result[15], in1 = true, out0 = negative);
 }
