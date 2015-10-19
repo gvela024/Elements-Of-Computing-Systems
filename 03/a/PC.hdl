@@ -11,15 +11,6 @@
  * else                    out[t+1] = out[t]
  */
 
-/*in   res    load  inc
-f        0       0    0
-inc      0       0    1
-in       0       1    0
-in       0       1    1
-false    1       0    0
-false...
-*/
-
 CHIP PC {
     IN in[16],load,inc,reset;
     OUT out[16];
