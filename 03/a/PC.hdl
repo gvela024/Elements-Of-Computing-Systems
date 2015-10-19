@@ -11,18 +11,33 @@
  * else                    out[t+1] = out[t]
  */
 
+/*in   res    load  inc
+f        0       0    0
+inc      0       0    1
+in       0       1    0
+in       0       1    1
+false    1       0    0
+false...
+*/
+
 CHIP PC {
     IN in[16],load,inc,reset;
     OUT out[16];
 
     PARTS:
-      Mux16(a = feedback, b = in, sel = load, out = feedbackOrLoad);
+      Inc16(in = feedback, out = incremented);
 
-      Inc16(in0 = feedbackOrLoad, sum = incremented);
+      Mux8Way16(
+         a = feedback,
+         b = incremented,
+         c = in,
+         d = in,
+         e = false,
+         f = false,
+         g = false,
+         h = false,
+         sel[2] = reset, sel[1] = load, sel[0] = inc,
+         out = registerInput);
 
-      Mux16(a = feedbackOrLoad, b = incremented, sel = inc, out = incrementedOrNot);
-
-      Mux16(a = incrementedOrNot, b = false, sel = reset, out = zeroOrNot);
-
-      Register(in = zeroOrNot, out = out, out = feedback);
+      Register(in = registerInput, load = true, out = out, out = feedback);
 }
