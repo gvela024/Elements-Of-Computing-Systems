@@ -10,10 +10,34 @@
  * (the loaded value will be emitted to out from the next time step onward).
  */
 
+
+  5 4 3 2 1 0
+  0 0 0 0 0 0 = 0x0000
+  0 0 0 0 0 1 = 0x0001
+  0 0 0 0 1 0 = 0x0002
+  0 0 0 0 1 1 = 0x0003
+
+  1 1 1 1 0 1 = 0xfffd
+  1 1 1 1 1 0 = 0xfffe
+  1 1 1 1 1 1 = 0xffff
+
+
 CHIP RAM64 {
     IN in[16], load, address[6];
     OUT out[16];
 
     PARTS:
-      DMux(in = load, sel = address[5], a = highAddressRegisters, b = lowAddressRegisters)
+      DMux8Way(
+         in = load,
+         sel[2] = address[5],
+         sel[1] = address[4],
+         sel[0] = address[3],
+         a = ,
+         b = ,
+         c = ,
+         d = ,
+         e = ,
+         f = ,
+         g = ,
+         h = );
 }
