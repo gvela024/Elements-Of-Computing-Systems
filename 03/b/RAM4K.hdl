@@ -5,8 +5,8 @@
 
 /**
  * Memory of 4K registers, each 16 bit-wide. Out holds the value
- * stored at the memory location specified by address. If load==1, then 
- * the in value is loaded into the memory location specified by address 
+ * stored at the memory location specified by address. If load==1, then
+ * the in value is loaded into the memory location specified by address
  * (the loaded value will be emitted to out from the next time step onward).
  */
 
@@ -15,5 +15,38 @@ CHIP RAM4K {
     OUT out[16];
 
     PARTS:
-    // Put your code here:
+      DMux8Way(
+         in = load,
+         sel = address[9..11],
+         a = ramPage0Load,
+         b = ramPage1Load,
+         c = ramPage2Load,
+         d = ramPage3Load,
+         e = ramPage4Load,
+         f = ramPage5Load,
+         g = ramPage6Load,
+         h = ramPage7Load
+      );
+
+      RAM512(in = in, load = ramPage0Load, address = address[0..8], out = page0);
+      RAM512(in = in, load = ramPage1Load, address = address[0..8], out = page1);
+      RAM512(in = in, load = ramPage2Load, address = address[0..8], out = page2);
+      RAM512(in = in, load = ramPage3Load, address = address[0..8], out = page3);
+      RAM512(in = in, load = ramPage4Load, address = address[0..8], out = page4);
+      RAM512(in = in, load = ramPage5Load, address = address[0..8], out = page5);
+      RAM512(in = in, load = ramPage6Load, address = address[0..8], out = page6);
+      RAM512(in = in, load = ramPage7Load, address = address[0..8], out = page7);
+
+      Mux8Way16(
+        a = page0,
+        b = page1,
+        c = page2,
+        d = page3,
+        e = page4,
+        f = page5,
+        g = page6,
+        h = page7,
+        sel = address[9..11],
+        out = out
+      );
 }
